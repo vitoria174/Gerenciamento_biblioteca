@@ -1,0 +1,21 @@
+class Biblioteca:
+    def __init__(self):
+        self.Lista_livro = []
+        
+    def cadastrar_livro(self, titulo, autor, ano, genero, quantidade):
+        titulolivro = titulo
+        autorlivro = autor
+        anolivro = ano
+        generolivro = genero
+        quantidadelivro = quantidade
+        
+        self.Lista_livro.append ({"Titulo":titulo, "Autor":autor, "Ano": ano, "Genero":genero, "Quantidade":quantidade})
+        
+    def listar_livros(self):
+        print(self.Lista_livro)
+        
+u = Biblioteca()
+u.cadastrar_livro('alquimista','paulo coellho', '2001', 'fantasia', 4)
+u.cadastrar_livro(' ',' ',' ', '', 5)
+u.listar_livros()
+        
