@@ -18,16 +18,31 @@ class Biblioteca:
         
     def atualizar_livro(self):
         id_livro_atualizacao = int(input("n° de cadastro: "))
+        inicio = 0
+        fim = len(self.Lista_livro)-1
         
-        for i in self.Lista_livro:
-            if i["N° Cadastro"] == id_livro_atualizacao:
-                print('ok, liberado para atualizacao')
+        while inicio <= fim:
+            meio = (inicio + fim)//2
+            livro_meio = self.Lista_livro[meio]
+            
+            if livro_meio['N° Cadastro'] == id_livro_atualizacao:
+                novo_titulo = str(input("Titulo: "))
+                novo_autor = str(input("Autor: "))
+                novo_ano = str(input("Ano: "))
+                novo_genero = str(input("Genero: "))
+                
+                atualizacao_livro = {"Titulo":novo_titulo,"Autor":novo_autor,"Ano":novo_ano,"Genero":novo_genero}
+                self.Lista_livro[meio].update(atualizacao_livro)
+                return   
+            elif livro_meio['N° Cadastro'] < id_livro_atualizacao:
+                inicio = meio + 1 
             else:
-                return f'N° de cadastro não encontrado'
-        
+                fim = meio -1
+
 u = Biblioteca()
 u.cadastrar_livro('alquimista','paulo coellho', '2001', 'fantasia', 4)
 u.cadastrar_livro('livro1','autor1 ','2010', 'romance', 5)
+u.cadastrar_livro('livro2','autor2 ','2012', 'acao', 8)
 u.listar_todos_livros()
-print(u.atualizar_livro())
-        
+u.atualizar_livro()
+u.listar_todos_livros()        
