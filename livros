@@ -11,22 +11,23 @@ class Biblioteca:
         generolivro = genero
         quantidadelivro = quantidade
         
-        self.Lista_livro.append ({"N° Cadastro":self.id_livro,"Titulo":titulo, "Autor":autor, "Ano": ano, "Genero":genero, "Quantidade":quantidade})
+        self.Lista_livro.append ({"N° Cadastro":int(self.id_livro),"Titulo":titulo, "Autor":autor, "Ano": ano, "Genero":genero, "Quantidade":quantidade})
         
     def listar_todos_livros(self):
         print(self.Lista_livro)
         
-    def buscar_titulo():
-        pass
-    def buscar_autor():
-        pass
-    def buscar_ano():
-        pass
-    def buscar_genero():
-        pass
+    def atualizar_livro(self):
+        id_livro_atualizacao = int(input("n° de cadastro: "))
+        
+        for i in self.Lista_livro:
+            if i["N° Cadastro"] == id_livro_atualizacao:
+                print('ok, liberado para atualizacao')
+            else:
+                return f'N° de cadastro não encontrado'
         
 u = Biblioteca()
 u.cadastrar_livro('alquimista','paulo coellho', '2001', 'fantasia', 4)
 u.cadastrar_livro('livro1','autor1 ','2010', 'romance', 5)
 u.listar_todos_livros()
+print(u.atualizar_livro())
         
